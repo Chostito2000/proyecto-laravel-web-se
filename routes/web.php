@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\PaginaWebController;
+use App\Http\Controllers\registropersonawebcontroller;
+use App\Http\Controllers\ProductoController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,10 +35,20 @@ Route::get('/lista-personas/{id_persona}',
 [PersonaController::class, 'mostrarPersona']
 )->name('mostrar-personas');
 
+Route::get('/lista-productos', 
+[ProductoController::class, 'listarProductos']
+)->name('lista-productos');
 
+Route::get('/lista-productos/{id_producto}', 
+[ProductoController::class, 'mostrarProducto']
+)->name('mostrar-producto');
 //------------------------------------------------------------------------------
 //Pagina web
 Route::get('/pagina-web',
 [PaginaWebController::class, 'verPaginaWeb']
-)->name('pagina-web');
+)->name('pagina.web');
+
+Route::get('/pagina-web/registro persona',
+[registropersonawebcontroller::class, 'registroPersona']
+)->name('registro.persona');
 //------------------------------------------------------------------------------
